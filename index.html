@@ -127,7 +127,8 @@ is_suv(X).
 manufacturer(X, bmw).
   </textarea><br />
   <button onclick="runProlog()">Изпълни</button>
-
+  <br />
+  <button onclick="clearAll()" style="margin-top: 12px; background: #555;">Изчисти</button>
   <div id="result"></div>
   <div id="car-animation"></div>
 
@@ -143,22 +144,47 @@ car(ford_f150).
 car(tesla_model_s).
 car(jeep_wrangler).
 car(porsche_911).
+car(mercedes_s_class).
+car(nissan_leaf).
+car(honda_civic).
+car(chevrolet_camaro).
+car(subaru_outback).
 
 electric(tesla_model_s).
+electric(nissan_leaf).
+
 diesel(bmw_3_series).
 diesel(audi_a6).
+diesel(mercedes_s_class).
+diesel(subaru_outback).
+
 petrol(toyota_corolla).
 petrol(porsche_911).
 petrol(jeep_wrangler).
 petrol(ford_f150).
+petrol(honda_civic).
+petrol(chevrolet_camaro).
 
 suv(jeep_wrangler).
 suv(ford_f150).
+suv(subaru_outback).
+
 sedan(bmw_3_series).
 sedan(audi_a6).
 sedan(toyota_corolla).
 sedan(tesla_model_s).
+sedan(mercedes_s_class).
+sedan(nissan_leaf).
+sedan(honda_civic).
+
 sports_car(porsche_911).
+sports_car(chevrolet_camaro).
+
+luxury(bmw_3_series).
+luxury(audi_a6).
+luxury(tesla_model_s).
+luxury(porsche_911).
+luxury(mercedes_s_class).
 
 made_by(bmw_3_series, bmw).
 made_by(audi_a6, audi).
@@ -167,11 +193,11 @@ made_by(ford_f150, ford).
 made_by(tesla_model_s, tesla).
 made_by(jeep_wrangler, jeep).
 made_by(porsche_911, porsche).
-
-luxury(bmw_3_series).
-luxury(audi_a6).
-luxury(tesla_model_s).
-luxury(porsche_911).
+made_by(mercedes_s_class, mercedes).
+made_by(nissan_leaf, nissan).
+made_by(honda_civic, honda).
+made_by(chevrolet_camaro, chevrolet).
+made_by(subaru_outback, subaru).
 
 is_electric(X) :- electric(X).
 is_petrol(X) :- petrol(X).
@@ -200,7 +226,12 @@ is_offroad_vehicle(X) :- suv(X), made_by(X, jeep).
       ford_f150: '<img src="nwmsrocks-northwest-motorsport.gif" class="car-gif" alt="Ford F150" />',
       tesla_model_s: '<img src="eccentricity-tesla.gif" class="car-gif" alt="Tesla Model S" />',
       jeep_wrangler: '<img src="jeep-cars.gif" class="car-gif" alt="Jeep Wrangler" />',
-      porsche_911: '<img src="porsche-911-gt2-rs-supercar.gif" class="car-gif" alt="Porsche 911" />'
+      porsche_911: '<img src="porsche-911-gt2-rs-supercar.gif" class="car-gif" alt="Porsche 911" />',
+      mercedes_s_class: '<img src="GkwsFR.gif" class="car-gif" alt="Mercedes S class">',
+      nissan_leaf: '<img src="QZ2_vm.gif" class="car-gif" alt="Nissan Leaf">',
+      honda_civic: '<img src="2016-Honda-Civic-Sedan-gif.gif" class="car-gif" alt="Honda Civic">',
+      chevrolet_camaro: '<img src="c93898024951041c34fd99904782cd11.gif" class="car-gif" alt="Chevrolet Camaro">',
+      subaru_outback: '<img src="Subaru-Outback-header-GIF.gif" class="car-gif" alt="Subaru Outback">'
     };
 
    function runProlog() {
@@ -249,10 +280,16 @@ is_offroad_vehicle(X) :- suv(X), made_by(X, jeep).
         }
       });
     }
+    function clearAll() {
+  document.getElementById("prolog-input").value = "";
+  document.getElementById("result").textContent = "";
+  const animDiv = document.getElementById("car-animation");
+  animDiv.innerHTML = "";
+  animDiv.classList.remove("visible");
+}
   </script>
 </body>
 </html>
-
 
 
 
